@@ -190,6 +190,9 @@ class EasyLoading {
   /// info widget of loading
   Widget? infoWidget;
 
+  /// 是否横向布局, only used for [EasyLoadingStyle.custom].
+  bool horizontalLayout = false;
+
   Widget? _w;
 
   EasyLoadingOverlayEntry? overlayEntry;
@@ -482,6 +485,7 @@ class EasyLoading {
       maskType: maskType,
       dismissOnTap: dismissOnTap,
       completer: completer,
+      horizontalLayout: horizontalLayout,
     );
     completer.future.whenComplete(() {
       _callback(EasyLoadingStatus.show);

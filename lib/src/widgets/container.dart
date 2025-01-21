@@ -39,6 +39,7 @@ class EasyLoadingContainer extends StatefulWidget {
   final EasyLoadingMaskType? maskType;
   final Completer<void>? completer;
   final bool animation;
+  final bool horizontalLayout;
 
   const EasyLoadingContainer({
     Key? key,
@@ -49,6 +50,7 @@ class EasyLoadingContainer extends StatefulWidget {
     this.maskType,
     this.completer,
     this.animation = true,
+    this.horizontalLayout = false,
   }) : super(key: key);
 
   @override
@@ -172,6 +174,7 @@ class EasyLoadingContainerState extends State<EasyLoadingContainer>
               _Indicator(
                 status: _status,
                 indicator: widget.indicator,
+                horizontalLayout: widget.horizontalLayout,
               ),
               _animationController,
               _alignment,
@@ -186,10 +189,12 @@ class EasyLoadingContainerState extends State<EasyLoadingContainer>
 class _Indicator extends StatelessWidget {
   final Widget? indicator;
   final String? status;
+  final bool horizontalLayout;
 
   const _Indicator({
     required this.indicator,
     required this.status,
+    this.horizontalLayout = false,
   });
 
   @override
@@ -204,7 +209,30 @@ class _Indicator extends StatelessWidget {
         boxShadow: EasyLoadingTheme.boxShadow,
       ),
       padding: EasyLoadingTheme.contentPadding,
-      child: Row(
+      child: this.horizontalLayout ? Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          if (indicator != null)
+            Container(
+              margin: status?.isNotEmpty == true
+                  ? EasyLoadingTheme.textPadding
+                  : EdgeInsets.zero,
+              child: indicator,
+            ),
+          if (status != null)
+            Text(
+              status!,
+              style: EasyLoadingTheme.textStyle ??
+                  TextStyle(
+                    color: EasyLoadingTheme.textColor,
+                    fontSize: EasyLoadingTheme.fontSize,
+                  ),
+              textAlign: EasyLoadingTheme.textAlign,
+            ),
+        ],
+      ) : Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
