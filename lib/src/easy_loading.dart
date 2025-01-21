@@ -249,6 +249,7 @@ class EasyLoading {
   static Future<void> show({
     String? status,
     Widget? indicator,
+    EasyLoadingToastPosition? toastPosition,
     EasyLoadingMaskType? maskType,
     bool? dismissOnTap,
   }) {
@@ -256,6 +257,7 @@ class EasyLoading {
     return _instance._show(
       status: status,
       maskType: maskType,
+      toastPosition: toastPosition,
       dismissOnTap: dismissOnTap,
       w: w,
     );
@@ -266,6 +268,7 @@ class EasyLoading {
     double value, {
     String? status,
     EasyLoadingMaskType? maskType,
+    EasyLoadingToastPosition? toastPosition,
   }) async {
     assert(
       value >= 0.0 && value <= 1.0,
@@ -290,6 +293,7 @@ class EasyLoading {
       _instance._show(
         status: status,
         maskType: maskType,
+        toastPosition: toastPosition,
         dismissOnTap: false,
         w: w,
       );
@@ -305,6 +309,7 @@ class EasyLoading {
   static Future<void> showSuccess(
     String status, {
     Duration? duration,
+    EasyLoadingToastPosition? toastPosition,
     EasyLoadingMaskType? maskType,
     bool? dismissOnTap,
   }) {
@@ -317,6 +322,7 @@ class EasyLoading {
     return _instance._show(
       status: status,
       duration: duration ?? EasyLoadingTheme.displayDuration,
+      toastPosition: toastPosition,
       maskType: maskType,
       dismissOnTap: dismissOnTap,
       w: w,
@@ -327,6 +333,7 @@ class EasyLoading {
   static Future<void> showError(
     String status, {
     Duration? duration,
+    EasyLoadingToastPosition? toastPosition,
     EasyLoadingMaskType? maskType,
     bool? dismissOnTap,
   }) {
@@ -339,6 +346,7 @@ class EasyLoading {
     return _instance._show(
       status: status,
       duration: duration ?? EasyLoadingTheme.displayDuration,
+      toastPosition: toastPosition,
       maskType: maskType,
       dismissOnTap: dismissOnTap,
       w: w,
@@ -349,6 +357,7 @@ class EasyLoading {
   static Future<void> showInfo(
     String status, {
     Duration? duration,
+    EasyLoadingToastPosition? toastPosition,
     EasyLoadingMaskType? maskType,
     bool? dismissOnTap,
   }) {
@@ -361,6 +370,7 @@ class EasyLoading {
     return _instance._show(
       status: status,
       duration: duration ?? EasyLoadingTheme.displayDuration,
+      toastPosition: toastPosition,
       maskType: maskType,
       dismissOnTap: dismissOnTap,
       w: w,
