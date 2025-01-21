@@ -257,7 +257,7 @@ class EasyLoading {
     return _instance._show(
       status: status,
       maskType: maskType,
-      toastPosition: toastPosition,
+      toastPosition: toastPosition ?? EasyLoadingTheme.toastPosition,
       dismissOnTap: dismissOnTap,
       w: w,
     );
@@ -293,7 +293,7 @@ class EasyLoading {
       _instance._show(
         status: status,
         maskType: maskType,
-        toastPosition: toastPosition,
+        toastPosition: toastPosition ?? EasyLoadingTheme.toastPosition,
         dismissOnTap: false,
         w: w,
       );
@@ -322,7 +322,7 @@ class EasyLoading {
     return _instance._show(
       status: status,
       duration: duration ?? EasyLoadingTheme.displayDuration,
-      toastPosition: toastPosition,
+      toastPosition: toastPosition ?? EasyLoadingTheme.toastPosition,
       maskType: maskType,
       dismissOnTap: dismissOnTap,
       w: w,
@@ -346,7 +346,7 @@ class EasyLoading {
     return _instance._show(
       status: status,
       duration: duration ?? EasyLoadingTheme.displayDuration,
-      toastPosition: toastPosition,
+      toastPosition: toastPosition ?? EasyLoadingTheme.toastPosition,
       maskType: maskType,
       dismissOnTap: dismissOnTap,
       w: w,
@@ -370,7 +370,7 @@ class EasyLoading {
     return _instance._show(
       status: status,
       duration: duration ?? EasyLoadingTheme.displayDuration,
-      toastPosition: toastPosition,
+      toastPosition: toastPosition ?? EasyLoadingTheme.toastPosition,
       maskType: maskType,
       dismissOnTap: dismissOnTap,
       w: w,
