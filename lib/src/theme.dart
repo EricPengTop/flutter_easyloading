@@ -150,6 +150,9 @@ class EasyLoadingTheme {
   /// should dismiss on user tap
   static bool? get dismissOnTap => EasyLoading.instance.dismissOnTap;
 
+  /// 是否横向布局
+  static bool? get horizontalLayout => EasyLoading.instance.horizontalLayout;
+
   static bool ignoring(EasyLoadingMaskType? maskType) {
     maskType ??= EasyLoading.instance.maskType;
     return EasyLoading.instance.userInteractions ??
