@@ -191,7 +191,7 @@ class EasyLoading {
   Widget? infoWidget;
 
   /// 是否横向布局, only used for [EasyLoadingStyle.custom].
-  bool horizontalLayout = false;
+  bool? horizontalLayout;
 
   Widget? _w;
 
@@ -255,6 +255,7 @@ class EasyLoading {
     EasyLoadingToastPosition? toastPosition,
     EasyLoadingMaskType? maskType,
     bool? dismissOnTap,
+    bool? horizontalLayout,
   }) {
     Widget w = indicator ?? (_instance.indicatorWidget ?? LoadingIndicator());
     return _instance._show(
@@ -262,6 +263,7 @@ class EasyLoading {
       maskType: maskType,
       toastPosition: toastPosition ?? EasyLoadingTheme.toastPosition,
       dismissOnTap: dismissOnTap,
+      horizontalLayout: horizontalLayout ?? EasyLoadingTheme.horizontalLayout,
       w: w,
     );
   }
@@ -272,6 +274,7 @@ class EasyLoading {
     String? status,
     EasyLoadingMaskType? maskType,
     EasyLoadingToastPosition? toastPosition,
+    bool? horizontalLayout,
   }) async {
     assert(
       value >= 0.0 && value <= 1.0,
@@ -298,6 +301,7 @@ class EasyLoading {
         maskType: maskType,
         toastPosition: toastPosition ?? EasyLoadingTheme.toastPosition,
         dismissOnTap: false,
+        horizontalLayout: horizontalLayout ?? EasyLoadingTheme.horizontalLayout,
         w: w,
       );
       _instance._progressKey = _progressKey;
@@ -315,6 +319,7 @@ class EasyLoading {
     EasyLoadingToastPosition? toastPosition,
     EasyLoadingMaskType? maskType,
     bool? dismissOnTap,
+    bool? horizontalLayout,
   }) {
     Widget w = _instance.successWidget ??
         Icon(
@@ -328,6 +333,7 @@ class EasyLoading {
       toastPosition: toastPosition ?? EasyLoadingTheme.toastPosition,
       maskType: maskType,
       dismissOnTap: dismissOnTap,
+      horizontalLayout: horizontalLayout ?? EasyLoadingTheme.horizontalLayout,
       w: w,
     );
   }
@@ -339,6 +345,7 @@ class EasyLoading {
     EasyLoadingToastPosition? toastPosition,
     EasyLoadingMaskType? maskType,
     bool? dismissOnTap,
+    bool? horizontalLayout,
   }) {
     Widget w = _instance.errorWidget ??
         Icon(
@@ -352,6 +359,7 @@ class EasyLoading {
       toastPosition: toastPosition ?? EasyLoadingTheme.toastPosition,
       maskType: maskType,
       dismissOnTap: dismissOnTap,
+      horizontalLayout: horizontalLayout ?? EasyLoadingTheme.horizontalLayout,
       w: w,
     );
   }
@@ -363,6 +371,7 @@ class EasyLoading {
     EasyLoadingToastPosition? toastPosition,
     EasyLoadingMaskType? maskType,
     bool? dismissOnTap,
+    bool? horizontalLayout,
   }) {
     Widget w = _instance.infoWidget ??
         Icon(
@@ -376,6 +385,7 @@ class EasyLoading {
       toastPosition: toastPosition ?? EasyLoadingTheme.toastPosition,
       maskType: maskType,
       dismissOnTap: dismissOnTap,
+      horizontalLayout: horizontalLayout ?? EasyLoadingTheme.horizontalLayout,
       w: w,
     );
   }
@@ -387,6 +397,7 @@ class EasyLoading {
     EasyLoadingToastPosition? toastPosition,
     EasyLoadingMaskType? maskType,
     bool? dismissOnTap,
+    bool? horizontalLayout,
   }) {
     return _instance._show(
       status: status,
@@ -394,6 +405,7 @@ class EasyLoading {
       toastPosition: toastPosition ?? EasyLoadingTheme.toastPosition,
       maskType: maskType,
       dismissOnTap: dismissOnTap,
+      horizontalLayout: horizontalLayout ?? EasyLoadingTheme.horizontalLayout,
     );
   }
 
@@ -432,6 +444,7 @@ class EasyLoading {
     Duration? duration,
     EasyLoadingMaskType? maskType,
     bool? dismissOnTap,
+    bool? horizontalLayout,
     EasyLoadingToastPosition? toastPosition,
   }) async {
     assert(

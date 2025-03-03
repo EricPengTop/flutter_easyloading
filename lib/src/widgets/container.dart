@@ -39,7 +39,7 @@ class EasyLoadingContainer extends StatefulWidget {
   final EasyLoadingMaskType? maskType;
   final Completer<void>? completer;
   final bool animation;
-  final bool horizontalLayout;
+  final bool? horizontalLayout;
 
   const EasyLoadingContainer({
     Key? key,
@@ -50,7 +50,7 @@ class EasyLoadingContainer extends StatefulWidget {
     this.maskType,
     this.completer,
     this.animation = true,
-    this.horizontalLayout = false,
+    this.horizontalLayout,
   }) : super(key: key);
 
   @override
@@ -63,7 +63,7 @@ class EasyLoadingContainerState extends State<EasyLoadingContainer>
   Color? _maskColor;
   late AnimationController _animationController;
   late AlignmentGeometry _alignment;
-  late bool _dismissOnTap, _ignoring;
+  late bool _dismissOnTap, _ignoring, _horizontalLayout;
 
   //https://docs.flutter.dev/development/tools/sdk/release-notes/release-notes-3.0.0
   bool get isPersistentCallbacks =>
@@ -78,6 +78,7 @@ class EasyLoadingContainerState extends State<EasyLoadingContainer>
     _alignment = widget.toastPosition != null
         ? EasyLoadingTheme.alignment(widget.toastPosition)
         : AlignmentDirectional.center;
+    _horizontalLayout = widget.horizontalLayout ?? (EasyLoadingTheme.horizontalLayout ?? false);
     _dismissOnTap =
         widget.dismissOnTap ?? (EasyLoadingTheme.dismissOnTap ?? false);
     _ignoring =
@@ -174,7 +175,7 @@ class EasyLoadingContainerState extends State<EasyLoadingContainer>
               _Indicator(
                 status: _status,
                 indicator: widget.indicator,
-                horizontalLayout: widget.horizontalLayout,
+                horizontalLayout: _horizontalLayout,
               ),
               _animationController,
               _alignment,
